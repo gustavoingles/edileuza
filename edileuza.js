@@ -1,12 +1,13 @@
 const userList = {
-    siteUserList : [User],
-    masterUserList : [MasterUser]    
+    siteUserList : [],
+    masterUserList : []    
 }
 
 class User {
-    constructor(username, keyword) {
+    constructor(username, keyword, id) {
         this._username = username;
         this._keyword = keyword;
+        this._id = id;
     }
 
     // Getters e setters dos atributos dessa classe 
@@ -58,9 +59,9 @@ class User {
 }
 
 class MasterUser extends User {
-    constructor(username, keyword, adminPermissions) {
+    constructor(username, keyword, id, adminPermissions) {
         // Método super resgatando os atributos e métodos da super-classe
-        super(username,keyword);
+        super(username, keyword, id);
         this.adminPermissions = adminPermissions;
     }
 
@@ -74,7 +75,18 @@ class MasterUser extends User {
         this.adminPermissions = adminPermissions;
     }
 
+    /*
+
+    Protótipo de método de remoção de usuário
     removeUser(user) {
-        
+        const siteUserList = userList.siteUserList;
+        const index = siteUserList.findIndex(u => (u.id) === user.id);
+
+        if (index !== -1) {
+            siteUserList.splice(index, 1);
+            console.log(`Usuário ${userList.siteUserList.User.username()} removido da lista de usuários do site.`);
+        }
     }
+
+    */
 }
